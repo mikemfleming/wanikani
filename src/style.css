@@ -99,3 +99,42 @@ summary:focus-visible{outline:3px solid #629482;outline-offset:4px}
  .detail-stats{gap:20px}
 }
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Keep everyday logging visible; reveal supporting information on demand. */
+.review-home .page-title .eyebrow,.review-home .page-title p,.review-home .page-title>.refresh,.review-home footer{display:none}
+.review-home .page-title{margin-bottom:16px}
+.review-home .page-title h1{font-size:24px;margin:0}
+.review-home .recovery{max-width:720px;gap:12px}
+.quick-session{order:-1}
+.quick-stats{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:#65715c}
+.quick-stats strong{color:#334e3e;font-size:18px;font-variant-numeric:tabular-nums}
+.quick-session>progress{width:100%;height:5px;accent-color:#829671;margin:12px 0 22px;display:block}
+.quick-session .section-head h2{margin:0;font-size:18px}
+.quick-session .refresh{font-size:0;min-width:44px;min-height:44px;padding:12px}
+.quick-session .session-target{margin:10px 0}
+.quick-session .session-report{border:0;margin:0;padding:0}
+.quick-session .primary-action{width:100%;font-size:15px;min-height:48px;margin-top:16px}
+.quick-session .text-action{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;min-height:44px;margin:4px 0 0;font-size:13px}
+.quick-caption{font-size:13px}
+.quick-notice:empty{display:none}
+.quick-notice{color:#405e35;font-size:13px;text-align:center}
+.quick-links{display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:13px}
+.quick-links .text-action{width:auto}
+.quick-options{display:block}
+.compact-details summary{display:flex;align-items:center;justify-content:space-between;gap:16px;list-style:none;cursor:pointer;font-size:15px;font-weight:600;min-height:44px}
+.compact-details summary::-webkit-details-marker{display:none}
+.compact-details[open]>summary{margin-bottom:16px}
+.compact-details[open]>summary>span{font-size:0}
+.compact-details[open]>summary>span:after{content:'−';font-size:15px}
+.review-home .preferences-panel,.review-home .compact-details{padding:12px 20px}
+.review-home .preferences-panel summary small{font-size:12px}
+@media(max-width:820px){
+ .review-home header{display:none}
+ .review-home .content{padding-top:18px}
+ .review-home .recovery-columns{display:block}
+ .quick-session .session-target strong{font-size:48px}
+ .quick-session .report-fields{margin-top:12px}
+ .review-home .panel.quick-session{padding:18px}
+ .review-home .preferences-panel,.review-home .compact-details{padding:10px 16px}
+ .review-home .preferences-panel summary small{margin-top:4px}
+}
