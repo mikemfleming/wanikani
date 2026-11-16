@@ -1,0 +1,31 @@
+name: Daily kanji snapshot
+on:
+  schedule:
+    - cron: '0 12 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: daily-snapshot
+  cancel-in-progress: false
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Record Guru kanji
+        run: node scripts/snapshot.mjs
+        env:
+          WANIKANI_API_TOKEN: ${{ secrets.WANIKANI_API_TOKEN }}
+      - name: Save daily history
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public/progress.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Record daily kanji progress'
+            git push
+          fi

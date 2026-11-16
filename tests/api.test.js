@@ -102,3 +102,12 @@ test('planner reuses fresh assignment data, checks after one minute and never ca
   h.advance(60001);await h.client.recovery();assert.equal(h.calls.length,7);assert.equal(resource(h.calls.at(-1).url),'assignments');
   await h.client.recovery();assert.equal(h.calls.length,7);assert.ok(h.calls.every(c=>resource(c.url)!=='reviews'));
 });
+test('forecast requests only the profile, kanji assignments and all-level kanji subjects', async () => {
+  const h=harness(dashboardResponse);
+  await h.client.forecast();
+  assert.deepEqual(h.calls.map(c=>c.url.slice(API_BASE.length)),['user','assignments?subject_types=kanji','subjects?types=kanji']);
+  await h.client.forecast();assert.equal(h.calls.length,3);
+  h.advance(60001);await h.client.forecast();
+  assert.equal(h.calls.length,5);
+  assert.equal(h.calls.filter(c=>resource(c.url)==='subjects').length,1);
+});

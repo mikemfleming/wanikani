@@ -99,6 +99,14 @@ export class WaniKaniClient {
     try { await this.cache.set(key, result); } catch { this.onStatus('Persistent cache is unavailable. Requests are still paced safely.'); }
     return result;
   }
+  forecast() {
+    return this.lock(`ko:sync:${this.account}`, async () => {
+      const user = await this.resource('user', false, 60000);
+      const assignments = await this.resource('assignments?subject_types=kanji', true, 60000);
+      const subjects = await this.resource('subjects?types=kanji', true, 86400000);
+      return { user: user.value, assignments: assignments.value, subjects: subjects.value };
+    });
+  }
   dashboard() {
     if (this.pending) return this.pending;
     this.pending = this.lock(`ko:sync:${this.account}`, async () => {
