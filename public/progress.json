@@ -311,7 +311,7 @@
     "date": "2026-11-17",
     "account": "f44eff52-efa2-4b31-b70d-9f0a8b860cdb",
     "level": 4,
-    "passed": 91,
+    "passed": 97,
     "levels": [
       {
         "level": 1,
@@ -331,7 +331,7 @@
       {
         "level": 4,
         "total": 40,
-        "passed": 8
+        "passed": 14
       },
       {
         "level": 5,
