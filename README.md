@@ -52,3 +52,12 @@ At least two distinct dates and positive growth are required to estimate a date.
 - `.github/workflows/deploy.yml`: validation and Pages deployment.
 
 Previous planner/cartoon modules remain unused; their views are removed from the app.
+
+## Visual treatments
+
+The default home URL retains the original design. Add a query parameter to preview alternate styles with the same snapshots and forecasting behavior:
+
+- `?theme=tokyo`: Tokyo subway signage, numbered stations, orange route line, yellow dividers.
+- `?theme=blog`: pastel block mosaic, dashed MF mark, blue links, bordered white panels.
+
+Unknown theme values use the default design. Theme selection lives only in the URL; it is not stored in the browser. Edit `src/themes.css` for the alternate styles, and `src/blog-mosaic.svg` for the blog background. The original styling stays in `src/style.css`.
