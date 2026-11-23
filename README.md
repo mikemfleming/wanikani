@@ -61,3 +61,9 @@ The default home URL retains the original design. Add a query parameter to previ
 - `?theme=blog`: pastel block mosaic, dashed MF mark, blue links, bordered white panels.
 
 Unknown theme values use the default design. Theme selection lives only in the URL; it is not stored in the browser. Edit `src/themes.css` for the alternate styles, and `src/blog-mosaic.svg` for the blog background. The original styling stays in `src/style.css`.
+
+## Activity charts
+
+The progress chart fits the Guru axis around the observed counts, with whole-number ticks and padding. Completed lessons use a separate right axis and dashed line because they include all subject types and can be a much larger count. Hover, keyboard focus, or tap reveals totals; point descriptions include changes from the previous snapshot.
+
+New workflow snapshots collect all assignments. `lessonsCompleted` counts visible assignments with `started_at` set. Old snapshots without lesson counts are gaps, never fabricated zeroes. Lesson totals need one new workflow snapshot. New snapshots also include `capturedAt` for the actual check timestamp; existing forecasts still use UTC dates.

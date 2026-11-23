@@ -102,7 +102,7 @@ export class WaniKaniClient {
   forecast() {
     return this.lock(`ko:sync:${this.account}`, async () => {
       const user = await this.resource('user', false, 60000);
-      const assignments = await this.resource('assignments?subject_types=kanji', true, 60000);
+      const assignments = await this.resource('assignments', true, 60000);
       const subjects = await this.resource('subjects?types=kanji', true, 86400000);
       return { user: user.value, assignments: assignments.value, subjects: subjects.value };
     });

@@ -3,6 +3,8 @@ export function snapshot(data, now = new Date()) {
   const visible = data.subjects.filter(s => s.object === 'kanji' && !s.data.hidden_at);
   const assignments = new Map(data.assignments.filter(a => !a.data.hidden).map(a => [a.data.subject_id, a.data]));
   return { date: now.toISOString().slice(0, 10), account: data.user.id, level: data.user.level,
+    capturedAt: now.toISOString(),
+    lessonsCompleted: data.assignments.filter(a => !a.data.hidden && a.data.started_at).length,
     passed: visible.filter(s => assignments.get(s.id)?.passed_at).length,
     levels: Array.from({length: 60}, (_, i) => {
       const kanji = visible.filter(s => s.data.level === i + 1);

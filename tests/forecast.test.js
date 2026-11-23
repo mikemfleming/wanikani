@@ -19,3 +19,7 @@ test('zero growth has no dates and level 60 has no future milestones',()=>{
  assert.equal(forecast([entry('2026-01-01',2),entry('2026-01-02',2)]).milestones[0].date,null);
  assert.deepEqual(forecast([entry('2026-01-01',2,60)]).milestones,[]);
 });
+test('snapshots track lessons across all subject types including radicals',()=>{
+ const data={user:{id:1,level:1},subjects:[],assignments:[{data:{subject_id:1,started_at:'2026-11-01',subject_type:'kanji'}},{data:{subject_id:2,started_at:'2026-11-01',subject_type:'radical'}},{data:{subject_id:3,started_at:null}},{data:{subject_id:4,started_at:'2026-11-01',hidden:true}}],statistics:[{data:{meaning_correct:10,meaning_incorrect:5,reading_correct:10}},{data:{meaning_correct:4}},{data:{meaning_correct:50,hidden:true}}]};
+ const s=snapshot(data,new Date('2026-11-02T12:00:00Z'));assert.equal(s.lessonsCompleted,2);assert.equal(s.capturedAt,'2026-11-02T12:00:00.000Z');
+});
