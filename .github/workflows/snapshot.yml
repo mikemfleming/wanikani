@@ -1,7 +1,8 @@
 name: Daily kanji snapshot
 on:
   schedule:
-    - cron: '0 12 * * *'
+    - cron: '0 0,12 * * *'
+      timezone: America/Chicago
   workflow_dispatch:
 permissions:
   contents: write

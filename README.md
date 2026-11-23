@@ -21,7 +21,7 @@ The GitHub Actions workflow is the only snapshot writer:
 
 1. Add a repository Actions secret named `WANIKANI_API_TOKEN` with your read-only token from https://www.wanikani.com/settings/personal_access_tokens. Leave write permissions unchecked.
 2. Enable Actions and permit workflow writes to repository contents. Branch rules must allow snapshot commits.
-3. Run **Daily kanji snapshot** manually once. It subsequently runs at 12:00 UTC daily (6 am CST / 7 am CDT). GitHub schedules can be delayed.
+3. Run **Daily kanji snapshot** manually once. It subsequently runs at midnight and noon America/Chicago (Central time), automatically following daylight saving time. GitHub schedules can be delayed.
 4. Enable Pages with GitHub Actions. A successful snapshot triggers the deployment workflow to rebuild from `main`.
 
 The scheduled workflow runs on the default branch; the supplied deployment targets `main`. No dependencies are needed to run the daily script.
@@ -40,7 +40,7 @@ pnpm snapshot
 
 Counts visible kanji assignments with `passed_at` set: kanji that have reached Guru at least once, including later stages and subsequent demotions. Vocabulary and radicals are excluded. Each level needs `ceil(0.9 × visible kanji on that level)` passes. Estimates sum the remaining thresholds of the current and intervening levels and divide by the observed increase in total passed kanji per elapsed day over up to 28 days.
 
-At least two distinct dates and positive growth are required to estimate a date. These are pace estimates, not an SRS simulation: radical unlocks, review schedules, and lesson choices affect actual dates. Old-level kanji can overstate progress toward new levels. A lower level or passed count starts a new history series to avoid using pre-reset pace. No past snapshots are fabricated.
+At least two distinct snapshot times and positive growth are required to estimate a date. These are pace estimates, not an SRS simulation: radical unlocks, review schedules, and lesson choices affect actual dates. Old-level kanji can overstate progress toward new levels. A lower level or passed count starts a new history series to avoid using pre-reset pace. No past snapshots are fabricated.
 
 ## Source
 
@@ -66,4 +66,6 @@ Unknown theme values use the default design. Theme selection lives only in the U
 
 The progress chart fits the Guru axis around the observed counts, with whole-number ticks and padding. Completed lessons use a separate right axis and dashed line because they include all subject types and can be a much larger count. Hover, keyboard focus, or tap reveals totals; point descriptions include changes from the previous snapshot.
 
-New workflow snapshots collect all assignments. `lessonsCompleted` counts visible assignments with `started_at` set. Old snapshots without lesson counts are gaps, never fabricated zeroes. Lesson totals need one new workflow snapshot. New snapshots also include `capturedAt` for the actual check timestamp; existing forecasts still use UTC dates.
+New workflow snapshots collect all assignments. `lessonsCompleted` counts visible assignments with `started_at` set. Old snapshots without lesson counts are gaps, never fabricated zeroes. Lesson totals need one new workflow snapshot. New snapshots also include `capturedAt` for the actual check timestamp; forecasts and chart spacing use actual elapsed time, with date-only legacy snapshots retained at their recorded UTC date boundary.
+
+Snapshot collection runs twice daily using `cron: '0 0,12 * * *'` with `timezone: America/Chicago`. Each timestamped check is retained separately, including manual runs; only an identical timestamp replaces an existing entry. History retains up to 366 days / 1,500 checks. The chart and history display Central time, and legacy snapshots without a capture time are marked as time unavailable.
