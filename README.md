@@ -21,7 +21,7 @@ The GitHub Actions workflow is the only snapshot writer:
 
 1. Add a repository Actions secret named `WANIKANI_API_TOKEN` with your read-only token from https://www.wanikani.com/settings/personal_access_tokens. Leave write permissions unchecked.
 2. Enable Actions and permit workflow writes to repository contents. Branch rules must allow snapshot commits.
-3. Run **Daily kanji snapshot** manually once. It subsequently runs at midnight and noon America/Chicago (Central time), automatically following daylight saving time. GitHub schedules can be delayed.
+3. Run **Daily kanji snapshot** manually once. It subsequently runs at 12:07 am and 12:07 pm America/Chicago (Central time), automatically following daylight saving time. GitHub schedules can be delayed.
 4. Enable Pages with GitHub Actions. A successful snapshot triggers the deployment workflow to rebuild from `main`.
 
 The scheduled workflow runs on the default branch; the supplied deployment targets `main`. No dependencies are needed to run the daily script.
@@ -68,4 +68,4 @@ The progress chart fits the Guru axis around the observed counts, with whole-num
 
 New workflow snapshots collect all assignments. `lessonsCompleted` counts visible assignments with `started_at` set. Old snapshots without lesson counts are gaps, never fabricated zeroes. Lesson totals need one new workflow snapshot. New snapshots also include `capturedAt` for the actual check timestamp; forecasts and chart spacing use actual elapsed time, with date-only legacy snapshots retained at their recorded UTC date boundary.
 
-Snapshot collection runs twice daily using `cron: '0 0,12 * * *'` with `timezone: America/Chicago`. Each timestamped check is retained separately, including manual runs; only an identical timestamp replaces an existing entry. History retains up to 366 days / 1,500 checks. The chart and history display Central time, and legacy snapshots without a capture time are marked as time unavailable.
+Snapshot collection runs twice daily using `cron: '7 0,12 * * *'` with `timezone: America/Chicago`. Each timestamped check is retained separately, including manual runs; only an identical timestamp replaces an existing entry. History retains up to 366 days / 1,500 checks. The chart and history display Central time, and legacy snapshots without a capture time are marked as time unavailable.
