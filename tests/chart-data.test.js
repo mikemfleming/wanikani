@@ -13,3 +13,10 @@ test('missing historical fields and decreases have no inferred positive increase
  assert.equal(increase([{lessonsCompleted:100},{lessonsCompleted:10}],1,'lessonsCompleted'),null);
  assert.equal(increase([{passed:89},{passed:91}],1,'passed'),2);
 });
+test('level markers exclude the starting baseline and repeated levels, and preserve skipped-level observations',async()=>{
+ const {levelUps}=await import('../src/chart-data.js');
+ assert.deepEqual(levelUps([]),[]);
+ const history=[{level:4},{level:4},{level:5},{level:5},{level:7}];
+ assert.deepEqual(levelUps(history).map(m=>[m.index,m.snapshot.level]),[[2,5],[4,7]]);
+ assert.deepEqual(levelUps([{level:5},{level:4}]),[]);
+});

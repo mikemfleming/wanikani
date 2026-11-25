@@ -16,3 +16,7 @@ export function increase(history, index, key) {
   const current = history[index]?.[key], previous = history[index-1]?.[key];
   return Number.isFinite(current) && Number.isFinite(previous) && current >= previous ? current - previous : null;
 }
+// The first snapshot establishes a baseline; only later increases are level-ups.
+export function levelUps(history) {
+  return history.flatMap((snapshot, index) => index > 0 && snapshot.level > history[index-1].level ? [{snapshot, index}] : []);
+}
