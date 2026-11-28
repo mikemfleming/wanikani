@@ -26,7 +26,7 @@ The GitHub Actions workflow is the only snapshot writer:
 
 The scheduled workflow runs on the default branch; the supplied deployment targets `main`. No dependencies are needed to run the daily script.
 
-`public/progress.json` contains your numeric WaniKani user ID, daily level, passed-kanji count and per-level totals. It is committed and published with the website. Enable this workflow only if you are comfortable sharing these progress statistics. The API token remains an Actions secret and is never written into the JSON or frontend bundle.
+`public/progress.json` contains your numeric WaniKani user ID, daily level, passed-kanji count, lesson count, review-answer count and per-level totals. It is committed and published with the website. Enable this workflow only if you are comfortable sharing these progress statistics. The API token remains an Actions secret and is never written into the JSON or frontend bundle.
 
 Run locally with the token already in your environment:
 
@@ -64,8 +64,8 @@ Unknown theme values use the default design. Theme selection lives only in the U
 
 ## Activity charts
 
-The progress chart fits the Guru axis around the observed counts, with whole-number ticks and padding. Completed lessons use a separate right axis and dashed line because they include all subject types and can be a much larger count. Hover, keyboard focus, or tap reveals totals; point descriptions include changes from the previous snapshot.
+The progress chart fits the Guru axis around the observed counts, with whole-number ticks and padding. Lessons and reviews use separate axes because they include all subject types and can be much larger counts. Hover, keyboard focus, or tap reveals totals; point descriptions include changes from the previous snapshot.
 
-New workflow snapshots collect all assignments. `lessonsCompleted` counts visible assignments with `started_at` set. Old snapshots without lesson counts are gaps, never fabricated zeroes. Lesson totals need one new workflow snapshot. New snapshots also include `capturedAt` for the actual check timestamp; forecasts and chart spacing use actual elapsed time, with date-only legacy snapshots retained at their recorded UTC date boundary.
+New workflow snapshots collect all assignments and review statistics. `lessonsCompleted` counts visible assignments with `started_at` set. `reviewsCompleted` sums meaning and reading answers, correct and incorrect, across all subjects in WaniKani's cumulative per-subject review statistics. One reviewed item may contribute two answers. The API does not supply full review event history, so old snapshots have no reconstructable review totals; the line begins at the first new workflow snapshot. Old snapshots without lesson counts are gaps, never fabricated zeroes. New snapshots also include `capturedAt` for the actual check timestamp; forecasts and chart spacing use actual elapsed time, with date-only legacy snapshots retained at their recorded UTC date boundary.
 
 Snapshot collection runs twice daily using `cron: '7 0,12 * * *'` with `timezone: America/Chicago`. Each timestamped check is retained separately, including manual runs; only an identical timestamp replaces an existing entry. History retains up to 366 days / 1,500 checks. The chart and history display Central time, and legacy snapshots without a capture time are marked as time unavailable.

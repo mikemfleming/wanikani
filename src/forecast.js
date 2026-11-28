@@ -11,6 +11,11 @@ export function snapshot(data, now = new Date()) {
   return { date: now.toISOString().slice(0, 10), account: data.user.id, level: data.user.level,
     capturedAt: now.toISOString(),
     lessonsCompleted: data.assignments.filter(a => !a.data.hidden && a.data.started_at).length,
+    // Review statistics expose per-subject answer counts, not a review-event history.
+    // Count each meaning/reading prompt once, whether it was right or wrong.
+    reviewsCompleted: (data.statistics || []).reduce((total, item) => total +
+      ['meaning_correct', 'meaning_incorrect', 'reading_correct', 'reading_incorrect']
+        .reduce((sum, key) => sum + (Number(item.data[key]) || 0), 0), 0),
     passed: visible.filter(s => assignments.get(s.id)?.passed_at).length,
     levels: Array.from({length: 60}, (_, i) => {
       const kanji = visible.filter(s => s.data.level === i + 1);
