@@ -8355,5 +8355,316 @@
         "passed": 0
       }
     ]
+  },
+  {
+    "date": "2026-11-28",
+    "account": "f44eff52-efa2-4b31-b70d-9f0a8b860cdb",
+    "level": 5,
+    "capturedAt": "2026-11-28T15:22:38.600Z",
+    "lessonsCompleted": 558,
+    "reviewsCompleted": 10345,
+    "passed": 123,
+    "levels": [
+      {
+        "level": 1,
+        "total": 18,
+        "passed": 18
+      },
+      {
+        "level": 2,
+        "total": 35,
+        "passed": 35
+      },
+      {
+        "level": 3,
+        "total": 30,
+        "passed": 30
+      },
+      {
+        "level": 4,
+        "total": 40,
+        "passed": 40
+      },
+      {
+        "level": 5,
+        "total": 46,
+        "passed": 0
+      },
+      {
+        "level": 6,
+        "total": 36,
+        "passed": 0
+      },
+      {
+        "level": 7,
+        "total": 37,
+        "passed": 0
+      },
+      {
+        "level": 8,
+        "total": 34,
+        "passed": 0
+      },
+      {
+        "level": 9,
+        "total": 41,
+        "passed": 0
+      },
+      {
+        "level": 10,
+        "total": 43,
+        "passed": 0
+      },
+      {
+        "level": 11,
+        "total": 39,
+        "passed": 0
+      },
+      {
+        "level": 12,
+        "total": 40,
+        "passed": 0
+      },
+      {
+        "level": 13,
+        "total": 35,
+        "passed": 0
+      },
+      {
+        "level": 14,
+        "total": 33,
+        "passed": 0
+      },
+      {
+        "level": 15,
+        "total": 38,
+        "passed": 0
+      },
+      {
+        "level": 16,
+        "total": 33,
+        "passed": 0
+      },
+      {
+        "level": 17,
+        "total": 35,
+        "passed": 0
+      },
+      {
+        "level": 18,
+        "total": 31,
+        "passed": 0
+      },
+      {
+        "level": 19,
+        "total": 32,
+        "passed": 0
+      },
+      {
+        "level": 20,
+        "total": 32,
+        "passed": 0
+      },
+      {
+        "level": 21,
+        "total": 35,
+        "passed": 0
+      },
+      {
+        "level": 22,
+        "total": 38,
+        "passed": 0
+      },
+      {
+        "level": 23,
+        "total": 36,
+        "passed": 0
+      },
+      {
+        "level": 24,
+        "total": 35,
+        "passed": 0
+      },
+      {
+        "level": 25,
+        "total": 37,
+        "passed": 0
+      },
+      {
+        "level": 26,
+        "total": 34,
+        "passed": 0
+      },
+      {
+        "level": 27,
+        "total": 28,
+        "passed": 0
+      },
+      {
+        "level": 28,
+        "total": 35,
+        "passed": 0
+      },
+      {
+        "level": 29,
+        "total": 35,
+        "passed": 0
+      },
+      {
+        "level": 30,
+        "total": 33,
+        "passed": 0
+      },
+      {
+        "level": 31,
+        "total": 38,
+        "passed": 0
+      },
+      {
+        "level": 32,
+        "total": 35,
+        "passed": 0
+      },
+      {
+        "level": 33,
+        "total": 34,
+        "passed": 0
+      },
+      {
+        "level": 34,
+        "total": 33,
+        "passed": 0
+      },
+      {
+        "level": 35,
+        "total": 38,
+        "passed": 0
+      },
+      {
+        "level": 36,
+        "total": 38,
+        "passed": 0
+      },
+      {
+        "level": 37,
+        "total": 36,
+        "passed": 0
+      },
+      {
+        "level": 38,
+        "total": 37,
+        "passed": 0
+      },
+      {
+        "level": 39,
+        "total": 34,
+        "passed": 0
+      },
+      {
+        "level": 40,
+        "total": 36,
+        "passed": 0
+      },
+      {
+        "level": 41,
+        "total": 33,
+        "passed": 0
+      },
+      {
+        "level": 42,
+        "total": 33,
+        "passed": 0
+      },
+      {
+        "level": 43,
+        "total": 34,
+        "passed": 0
+      },
+      {
+        "level": 44,
+        "total": 34,
+        "passed": 0
+      },
+      {
+        "level": 45,
+        "total": 34,
+        "passed": 0
+      },
+      {
+        "level": 46,
+        "total": 36,
+        "passed": 0
+      },
+      {
+        "level": 47,
+        "total": 37,
+        "passed": 0
+      },
+      {
+        "level": 48,
+        "total": 36,
+        "passed": 0
+      },
+      {
+        "level": 49,
+        "total": 35,
+        "passed": 0
+      },
+      {
+        "level": 50,
+        "total": 35,
+        "passed": 0
+      },
+      {
+        "level": 51,
+        "total": 34,
+        "passed": 0
+      },
+      {
+        "level": 52,
+        "total": 36,
+        "passed": 0
+      },
+      {
+        "level": 53,
+        "total": 34,
+        "passed": 0
+      },
+      {
+        "level": 54,
+        "total": 35,
+        "passed": 0
+      },
+      {
+        "level": 55,
+        "total": 34,
+        "passed": 0
+      },
+      {
+        "level": 56,
+        "total": 35,
+        "passed": 0
+      },
+      {
+        "level": 57,
+        "total": 34,
+        "passed": 0
+      },
+      {
+        "level": 58,
+        "total": 34,
+        "passed": 0
+      },
+      {
+        "level": 59,
+        "total": 34,
+        "passed": 0
+      },
+      {
+        "level": 60,
+        "total": 33,
+        "passed": 0
+      }
+    ]
   }
 ]
